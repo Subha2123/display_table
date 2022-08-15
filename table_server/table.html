@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        #table {
+    display: block;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 5px;
+}
+    </style>
+</head>
+<body>
+    
+    <div>
+        
+        <table id="table"></table>
+    </div>
+    <!-- <script src="script.js"></script> -->
+    <script>
+        
+let myTable = document.querySelector('#table');
+
+
+let employees = [
+    { id:1,name: 'Apple', price: 100},
+    { id:2, name: 'Mango', price: 200},
+    { id:3,name: 'Orange', price: 140},
+    { id:4,name: 'Lemon', price: 50}
+]
+
+let headers = ['Id', 'Fruits', 'Price'];
+
+    let table = document.createElement('table');
+    // let table = document.createElement('table');
+    let headerRow = document.createElement('tr');
+
+    headers.forEach(headerText => {
+        let header = document.createElement('th');
+        let textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
+
+    table.appendChild(headerRow);
+
+    employees.forEach(emp => {
+        let row = document.createElement('tr');
+
+        Object.values(emp).forEach(text => {
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+
+        table.appendChild(row);
+    });
+
+    myTable.appendChild(table);
+</script>
+</body>
+</html>
